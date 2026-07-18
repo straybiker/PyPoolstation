@@ -160,6 +160,13 @@ class Pool:
         self.uv_fuse_problem = None
         self.raw_vars = {}
 
+    def update_token(self, token):
+        """Replace the API token used for subsequent requests.
+
+        Lets a caller inject a freshly obtained token (e.g. after a re-login)
+        without having to rebuild the Pool object."""
+        self._token = token
+
     async def post(self, url, data=""):
         try:
             # Create a new Account instance with the token
